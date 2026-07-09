@@ -1,0 +1,59 @@
+﻿using System.Diagnostics;
+using System.Text;
+
+#pragma warning disable IDE0130
+namespace Ckl.Libs.ResultPattern;
+#pragma warning restore IDE0130
+
+internal static class ResultHelper
+{
+    internal static CallerInfo CreateCallerInfo(string methodName, string filePath, int lineNumber, string className = "")
+    {
+        return new CallerInfo
+        {
+            MethodName = methodName,
+            ClassName = className,
+            FilePath = filePath,
+            LineNumber = lineNumber,
+        };
+    }
+    
+    internal static string CallStackToString(IReadOnlyList<CallerInfo> callers) =>
+        callers.Count == 0
+            ? "(no callstack)"
+            : string.Join("\n", callers.Select(c => $"  at {c}"));
+
+    // Inner exceptions are chained with " → " so the full cause is visible without needing exception.ToString().
+    internal static string FormatExceptionMessage(Exception exception)
+    {
+        var sb = new StringBuilder("Exception: ").Append(exception.Message);
+        var inner = exception.InnerException;
+        while (inner is not null)
+        {
+            sb.Append(" → ").Append(inner.Message);
+            inner = inner.InnerException;
+        }
+        return sb.ToString();
+    }
+
+    // valueLabel: optional string representation of the result value, used by Result<TValue>.
+    internal static string FormatResult(bool succeeded, string? errorMessage, IReadOnlyList<CallerInfo> callers, Exception? exception, string? valueLabel = null)
+    {
+        if (succeeded)
+            return valueLabel is null ? "[Success]" : $"[Success] {valueLabel}";
+
+        var sb = new StringBuilder();
+        sb.Append("[Failed] ").Append(errorMessage);
+        if (callers.Count > 0)
+        {
+            sb.AppendLine();
+            sb.Append(CallStackToString(callers));
+        }
+        if (exception is not null)
+        {
+            sb.AppendLine();
+            sb.Append("Exception details: ").Append(exception);
+        }
+        return sb.ToString();
+    }
+}
