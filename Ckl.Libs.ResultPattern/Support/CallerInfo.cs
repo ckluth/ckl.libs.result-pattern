@@ -32,6 +32,20 @@ public sealed record CallerInfo
     public override string ToString()
     {
         if (string.IsNullOrEmpty(FilePath) || LineNumber == 0) return $"{ClassName}.{MethodName}()";
-        return $"{ClassName}.{MethodName}() in {Path.GetFileName(FilePath)}:{LineNumber}";
+        return $"{ClassName}.{MethodName}() in {GetFileName(FilePath)}:{LineNumber}";
+    }
+
+    /// <summary>
+    /// Extracts the filename from a path, independent of which OS produced it.
+    /// <see cref="Path.GetFileName(string)"/> only recognizes the current OS's
+    /// separator, so a Windows-style path (backslashes) survives unchanged when
+    /// this runs on Linux/macOS, and vice versa — <c>FilePath</c> is a
+    /// compile-time <c>[CallerFilePath]</c> value baked in by whichever machine
+    /// built the assembly, not necessarily the machine running it.
+    /// </summary>
+    private static string GetFileName(string path)
+    {
+        var lastSeparator = path.LastIndexOfAny(['\\', '/']);
+        return lastSeparator < 0 ? path : path[(lastSeparator + 1)..];
     }
 }

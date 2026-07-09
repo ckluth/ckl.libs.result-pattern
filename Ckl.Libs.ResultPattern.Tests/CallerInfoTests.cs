@@ -23,6 +23,25 @@ public sealed class CallerInfoTests
         Assert.That(text, Is.EqualTo("MyClass.DoSomething() in MyClass.cs:42"));
     }
 
+    [Test]
+    public void ToString_WithForwardSlashFilePath_ReturnsClassDotMethodInFilenameColon()
+    {
+        // FilePath is a compile-time [CallerFilePath] value baked in by whichever
+        // machine built the assembly — verify filename extraction works
+        // regardless of which separator style that machine used.
+        var caller = new CallerInfo
+        {
+            MethodName = "DoSomething",
+            ClassName  = "MyClass",
+            FilePath   = "/home/runner/src/MyClass.cs",
+            LineNumber = 42,
+        };
+
+        var text = caller.ToString();
+
+        Assert.That(text, Is.EqualTo("MyClass.DoSomething() in MyClass.cs:42"));
+    }
+
     // ── ToString — without usable file info ───────────────────────────────────
 
     [Test]
