@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Text;
 
 #pragma warning disable IDE0130
-namespace Ckl.Libs.ResultPattern;
+namespace CKL.Libs.ResultPattern;
 #pragma warning restore IDE0130
 
 internal static class ResultHelper

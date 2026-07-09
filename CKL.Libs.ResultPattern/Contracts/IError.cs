@@ -1,5 +1,5 @@
-﻿#pragma warning disable IDE0130
-namespace Ckl.Libs.ResultPattern;
+#pragma warning disable IDE0130
+namespace CKL.Libs.ResultPattern;
 #pragma warning restore IDE0130
 
 /// <summary>

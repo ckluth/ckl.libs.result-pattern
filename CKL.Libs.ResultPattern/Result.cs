@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 #pragma warning disable IDE0130
-namespace Ckl.Libs.ResultPattern;
+namespace CKL.Libs.ResultPattern;
 #pragma warning restore IDE0130
 
 

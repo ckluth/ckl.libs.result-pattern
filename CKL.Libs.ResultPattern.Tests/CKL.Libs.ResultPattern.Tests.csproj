@@ -7,8 +7,8 @@
 		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<LangVersion>latest</LangVersion>
-		<AssemblyName>Ckl.Libs.ResultPattern.Tests</AssemblyName>
-		<RootNamespace>Ckl.Libs.ResultPattern.Tests</RootNamespace>
+		<AssemblyName>CKL.Libs.ResultPattern.Tests</AssemblyName>
+		<RootNamespace>CKL.Libs.ResultPattern.Tests</RootNamespace>
 		<PlatformTarget>AnyCPU</PlatformTarget>
 	</PropertyGroup>
 	<ItemGroup>
@@ -17,6 +17,6 @@
 		<PackageReference Include="NUnit3TestAdapter" Version="6.1.0"/>
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Ckl.Libs.ResultPattern\Ckl.Libs.ResultPattern.csproj"/>
+		<ProjectReference Include="..\CKL.Libs.ResultPattern\CKL.Libs.ResultPattern.csproj"/>
 	</ItemGroup>
 </Project>

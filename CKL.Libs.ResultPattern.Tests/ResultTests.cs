@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Ckl.Libs.ResultPattern.Tests;
+namespace CKL.Libs.ResultPattern.Tests;
 
 [TestFixture]
 public sealed class ResultTests

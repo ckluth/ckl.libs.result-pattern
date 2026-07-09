@@ -1,4 +1,4 @@
-# Ckl.Libs.ResultPattern
+# CKL.Libs.ResultPattern
 
 **Exceptions are not a return channel.** This package provides the *Result
 pattern*: a type-safe alternative to `throw`/`catch`, where every operation
@@ -6,7 +6,7 @@ carries its success or failure as a return value — including an error message,
 an optional exception, and an automatically built call stack.
 
 Imported step by step from `JOSYN.Foundation.ResultPattern`. This is the
-**first** `ckl.libs.<name>` repo — see
+**first** `ckl-libs-<name>` repo — see
 [`ckl-builder`](https://github.com/ckluth/ckl-builder) for the ecosystem's
 repo-family conventions and the decision-trail this import follows.
 
@@ -220,7 +220,7 @@ documented in [`CHANGELOG.md`](CHANGELOG.md).
 ### Project structure
 
 ```
-Ckl.Libs.ResultPattern\
+CKL.Libs.ResultPattern\
 ├── Result.cs                   # void Result
 ├── Result.generic.cs           # Result<T>
 ├── Support\
@@ -250,4 +250,4 @@ None.
 
 ---
 
-*Ckl.Libs.ResultPattern — © 2026 ckluth — MIT License*
+*CKL.Libs.ResultPattern — © 2026 ckluth — MIT License*
